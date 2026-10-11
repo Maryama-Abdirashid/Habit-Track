@@ -1,0 +1,169 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daywell | Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <a class="logo" href="#">daywell<span>.</span></a>
+
+            <p class="nav-label">MENU</p>
+            <nav>
+                <a href="#dashboard" class="nav-link active">▦ Dashboard</a>
+                <a href="#habits" class="nav-link">✓ My Habits</a>
+                <a href="#history" class="nav-link">▤ History</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="mini-card">
+                    <span class="mini-icon">✦</span>
+                    <h3>Small steps matter.</h3>
+                    <p>Consistency creates the life you want.</p>
+                </div>
+                <p class="sidebar-footer">DAYWELL © 2026</p>
+            </div>
+        </aside>
+
+        <main class="main-content" id="dashboard">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow" id="todayDate">YOUR DAILY SPACE</p>
+                    <h1>Good morning, <span>Maryama</span> 👋</h1>
+                    <p class="subtitle">A little progress every day adds up.</p>
+                </div>
+                <button class="avatar" aria-label="User profile">M</button>
+            </header>
+
+            <section class="welcome-banner">
+                <div>
+                    <p class="banner-tag">YOUR DAILY RESET</p>
+                    <h2>Become 1% better<br>every single day.</h2>
+                    <p>Build healthy routines, one check at a time.</p>
+                    <a href="#habits" class="banner-button">View my habits <span>→</span></a>
+                </div>
+                <div class="banner-art" aria-hidden="true">
+                    <div class="art-circle circle-one"></div>
+                    <div class="art-circle circle-two"></div>
+                    <div class="art-leaf">✳</div>
+                    <div class="art-sun">☀</div>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top"><span>Today's progress</span><span class="stat-icon purple">◷</span></div>
+                    <h2 id="progressPercent">0%</h2>
+                    <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+                    <p id="progressText">0 of 16 habits completed</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top"><span>Completed today</span><span class="stat-icon green">✓</span></div>
+                    <h2 id="completedCount">0</h2>
+                    <p class="stat-note">Keep showing up for yourself.</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top"><span>Current streak</span><span class="stat-icon orange">♨</span></div>
+                    <h2><span id="streakCount">0</span> <small>days</small></h2>
+                    <p class="stat-note">Build your consistency.</p>
+                </article>
+            </section>
+
+            <section class="habits-section" id="habits">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">MAKE TODAY COUNT</p>
+                        <h2>Your daily habits</h2>
+                    </div>
+                    <button id="openAddModal" class="primary-button">＋ Add habit</button>
+                </div>
+
+                <div class="filter-row">
+                    <div id="filters" class="filters">
+                        <button class="filter-btn active" data-filter="All">All habits</button>
+                        <button class="filter-btn" data-filter="Health">Health</button>
+                        <button class="filter-btn" data-filter="Mind">Mind</button>
+                        <button class="filter-btn" data-filter="Productivity">Productivity</button>
+                        <button class="filter-btn" data-filter="Lifestyle">Lifestyle</button>
+                    </div>
+                    <span id="habitTotal" class="habit-total">16 habits</span>
+                </div>
+
+                <div id="habitList" class="habit-list"></div>
+
+                <div id="emptyState" class="empty-state hidden">
+                    <div>🌱</div>
+                    <h3>No habits here yet</h3>
+                    <p>Add a new habit or choose another category.</p>
+                </div>
+            </section>
+
+            <section class="history-section" id="history">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">LOOK HOW FAR YOU'VE COME</p>
+                        <h2>Recent activity</h2>
+                    </div>
+                    <button id="exportBtn" class="secondary-button">Export data ↓</button>
+                </div>
+                <div id="historyList" class="history-list"></div>
+            </section>
+
+            <footer class="page-footer">
+                <p>Made with care for your everyday growth <span>♥</span></p>
+            </footer>
+        </main>
+    </div>
+
+    <dialog id="habitModal" class="habit-modal">
+        <form id="habitForm">
+            <div class="modal-heading">
+                <div>
+                    <p class="eyebrow">START SMALL</p>
+                    <h2>Create a new habit</h2>
+                </div>
+                <button type="button" id="closeModal" class="close-button">×</button>
+            </div>
+
+            <label for="habitName">Habit name</label>
+            <input id="habitName" type="text" maxlength="60"
+                   placeholder="e.g. Read for 20 minutes" required>
+
+            <label for="habitCategory">Category</label>
+            <select id="habitCategory" required>
+                <option value="Health">Health</option>
+                <option value="Mind">Mind</option>
+                <option value="Productivity">Productivity</option>
+                <option value="Lifestyle">Lifestyle</option>
+            </select>
+
+            <label for="habitIcon">Choose an icon</label>
+            <select id="habitIcon">
+                <option value="🌱">🌱 Plant</option>
+                <option value="💧">💧 Water</option>
+                <option value="📚">📚 Books</option>
+                <option value="🏃">🏃 Exercise</option>
+                <option value="🧘">🧘 Meditation</option>
+                <option value="✍️">✍️ Writing</option>
+                <option value="🌙">🌙 Sleep</option>
+                <option value="⭐">⭐ Star</option>
+                <option value="🎯">🎯 Goal</option>
+                <option value="❤️">❤️ Health</option>
+            </select>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelModal" class="secondary-button">Cancel</button>
+                <button type="submit" class="primary-button">Create habit</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
